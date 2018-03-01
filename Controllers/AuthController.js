@@ -10,8 +10,6 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config');
 
-var VerifyToken = require('./VerifyToken');
-
 /*
 router.post('/register', function(req, res) {
   
@@ -46,11 +44,11 @@ router.get('/me', function(req, res) {
 */
 router.post('/login', function(req, res) {
 
-  console.log("token:" + req.body.token);
+  console.log("api key:" + req.body.key);
 
-  if (req.body.token == '1234567890') {
-    var token = jwt.sign({ id: req.body.token }, config.secret, {
-      expiresIn: 60 // expires in 24 hours
+  if (req.body.key == '0123456789') {
+    var token = jwt.sign({ uid: req.body.uid }, config.secret, {
+      expiresIn: 300 // expires in 5 minutes
     });
     res.status(200).send({ auth: true, token: token });    
   } else {
