@@ -1,4 +1,5 @@
 module.exports = { 
+  'secret' : 'supersecrt',
   'mysql' : {
     'dbhost': 'host:port',
     'dbname': 'test',
